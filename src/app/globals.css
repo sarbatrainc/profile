@@ -1,0 +1,373 @@
+@import "tailwindcss";
+
+/*
+ * Theme is driven by a `.dark` class on <html>, set before paint by
+ * src/components/theme/theme-script.tsx. This avoids a flash of the wrong
+ * theme and lets the user's saved preference be applied on first render.
+ */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* Light mode: light black background, deep text, vibrant blue-purple accent. */
+  --background: oklch(15% 0.015 265);
+  --background-subtle: oklch(18% 0.018 265);
+  --surface: oklch(20% 0.02 265);
+  --surface-2: oklch(23% 0.022 265);
+  --surface-raised: oklch(24% 0.024 265);
+
+  --foreground: oklch(96% 0.005 265);
+  --foreground-muted: oklch(70% 0.014 265);
+  --foreground-subtle: oklch(56% 0.014 265);
+
+  --border: oklch(30% 0.016 265);
+  --border-strong: oklch(38% 0.02 265);
+
+  --accent: oklch(58% 0.19 260);
+  --accent-rgb: 96, 76, 232;
+  --accent-hover: oklch(52% 0.21 260);
+  --accent-soft: oklch(28% 0.05 262);
+  --accent-on: oklch(16% 0.02 265);
+
+  --accent-2: oklch(56% 0.17 300);
+  --accent-2-soft: oklch(28% 0.05 300);
+
+  --success: oklch(54% 0.13 155);
+  --success-soft: oklch(28% 0.05 155);
+  --warning: oklch(56% 0.14 70);
+  --warning-soft: oklch(30% 0.05 70);
+
+  --ring: oklch(58% 0.19 260);
+
+  /* Cursor glow + particle trail — configurable via CSS variables. */
+  --cursor-glow-rgb: 96, 76, 232;
+  --cursor-glow-size: 160;
+  --cursor-glow-hover: 240;
+  --cursor-max-particles: 22;
+  --cursor-particle-life: 0.9;
+  --cursor-spawn-interval: 45;
+
+  --font-sans: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+
+  --whatsapp: oklch(47% 0.17 140);
+  --whatsapp-hover: oklch(43% 0.19 140);
+  --whatsapp-on: oklch(100% 0 0);
+
+  --shadow-color: 0 0% 0%;
+  --shadow-sm: 0 1px 2px 0 rgb(var(--shadow-color) / 0.4);
+  --shadow-md: 0 4px 16px -4px rgb(var(--shadow-color) / 0.5);
+  --shadow-lg: 0 18px 48px -12px rgb(var(--shadow-color) / 0.65);
+  --shadow-float: 0 20px 60px -15px rgb(var(--shadow-color) / 0.85);
+
+  --glass-bg: oklch(20% 0.02 265 / 0.82);
+  --glass-border: oklch(30% 0.016 265 / 0.9);
+}
+
+.dark {
+  /* Dark mode: deep background, off-white text, vibrant blue-purple accent. */
+  --background: oklch(14% 0.012 265);
+  --background-subtle: oklch(17% 0.014 265);
+  --surface: oklch(18% 0.014 265);
+  --surface-2: oklch(21% 0.016 265);
+  --surface-raised: oklch(22% 0.017 265);
+
+  --foreground: oklch(97% 0.004 265);
+  --foreground-muted: oklch(74% 0.014 265);
+  --foreground-subtle: oklch(61% 0.014 265);
+
+  --border: oklch(28% 0.016 265);
+  --border-strong: oklch(36% 0.02 265);
+
+  --accent: oklch(74% 0.15 258);
+  --accent-rgb: 140, 130, 240;
+  --accent-hover: oklch(80% 0.15 258);
+  --accent-soft: oklch(28% 0.05 262);
+  --accent-on: oklch(16% 0.02 265);
+
+  --accent-2: oklch(74% 0.14 305);
+  --accent-2-soft: oklch(28% 0.05 305);
+
+  --success: oklch(76% 0.14 155);
+  --success-soft: oklch(28% 0.05 155);
+  --warning: oklch(82% 0.13 78);
+  --warning-soft: oklch(30% 0.05 78);
+
+  --ring: oklch(74% 0.15 258);
+
+  /* Cursor glow + particle trail — configurable via CSS variables. */
+  --cursor-glow-rgb: 140, 130, 240;
+  --cursor-glow-size: 160;
+  --cursor-glow-hover: 240;
+  --cursor-max-particles: 22;
+  --cursor-particle-life: 0.9;
+  --cursor-spawn-interval: 45;
+
+  --font-sans: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+
+  --whatsapp: oklch(52% 0.19 140);
+  --whatsapp-hover: oklch(60% 0.21 140);
+  --whatsapp-on: oklch(97% 0.02 265);
+
+  --shadow-color: 0 0% 0%;
+  --shadow-sm: 0 1px 2px 0 rgb(var(--shadow-color) / 0.4);
+  --shadow-md: 0 4px 16px -4px rgb(var(--shadow-color) / 0.5);
+  --shadow-lg: 0 18px 48px -12px rgb(var(--shadow-color) / 0.65);
+  --shadow-float: 0 20px 60px -15px rgb(var(--shadow-color) / 0.85);
+
+  --glass-bg: oklch(19% 0.014 265 / 0.82);
+  --glass-border: oklch(30% 0.018 265 / 0.9);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-subtle: var(--background-subtle);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-raised: var(--surface-raised);
+
+  --color-foreground: var(--foreground);
+  --color-muted: var(--foreground-muted);
+  --color-subtle: var(--foreground-subtle);
+
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-on: var(--accent-on);
+
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-hover: var(--whatsapp-hover);
+  --color-whatsapp-on: var(--whatsapp-on);
+
+  --color-accent-2: var(--accent-2);
+  --color-accent-2-soft: var(--accent-2-soft);
+
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+
+  --shadow-soft: var(--shadow-sm);
+  --shadow-card: var(--shadow-md);
+  --shadow-float: var(--shadow-lg);
+
+  --radius-card: 1rem;
+
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-float-slow: float-slow 9s ease-in-out infinite;
+  --animate-caret: caret 1.15s steps(1) infinite;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Offset for the sticky header when jumping to an anchor. */
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+    /* Prevent phantom horizontal scrolling from full-bleed fixed elements
+       without turning <html> into a scroll container. */
+    overflow-x: clip;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+    letter-spacing: -0.022em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--accent-on);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+  }
+
+  /* Consistent focus treatment for native links inside prose blocks. */
+  main a:not([class*="rounded"]) {
+    text-decoration-color: var(--accent);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: 9999px;
+    border: 2px solid var(--background);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--foreground-subtle);
+  }
+}
+
+@layer components {
+  /* Frosted panel, used sparingly (sticky header, elevated cards). */
+  .glass {
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border-color: var(--glass-border);
+  }
+
+  /* Restrained text gradient for headline accents only. */
+  .text-gradient {
+    background-image: linear-gradient(
+      100deg,
+      var(--accent) 0%,
+      var(--accent-2) 55%,
+      var(--foreground) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Fine grid backdrop used behind the hero and architecture sections. */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, var(--border) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+  }
+
+  .bg-dots {
+    background-image: radial-gradient(var(--border-strong) 1px, transparent 1px);
+    background-size: 22px 22px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 30%, transparent 100%);
+    mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 30%, transparent 100%);
+  }
+}
+
+/*
+ * Keyframes are declared at the top level so they are always emitted,
+ * regardless of which utilities reference them.
+ */
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes caret {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/*
+ * Scroll reveal.
+ *
+ * Scoped to .js (set by the theme script) so that without JavaScript — or if
+ * an observer never fires — every section stays fully visible instead of
+ * remaining at opacity 0. Start/end offsets come from CSS variables set by the
+ * Reveal component.
+ */
+@layer utilities {
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translate3d(var(--reveal-x, 0px), var(--reveal-y, 18px), 0);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+
+  .js [data-reveal][data-revealed="true"] {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .animate-hero-in {
+    animation: hero-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+/*
+ * Reduced motion: remove movement and looping animation entirely.
+ * Content is already revealed by default when JS is unavailable, and the
+ * reveal states below keep everything visible.
+ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

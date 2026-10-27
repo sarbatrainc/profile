@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1b1f2a" />
+      <stop offset="100%" stop-color="#0d0f16" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7aa2f7" />
+      <stop offset="100%" stop-color="#b98cf0" />
+    </linearGradient>
+  </defs>
+
+  <rect width="64" height="64" rx="14" fill="url(#bg)" />
+  <rect x="0.75" y="0.75" width="62.5" height="62.5" rx="13.25" fill="none" stroke="#2b3140" stroke-width="1.5" />
+
+  <!-- Layered stack: application, API, database -->
+  <g fill="url(#accent)">
+    <rect x="14" y="20" width="26" height="5" rx="2.5" opacity="0.95" />
+    <rect x="14" y="29.5" width="36" height="5" rx="2.5" opacity="0.7" />
+    <rect x="14" y="39" width="20" height="5" rx="2.5" opacity="0.45" />
+  </g>
+
+  <!-- Data node -->
+  <circle cx="44" cy="41.5" r="3" fill="url(#accent)" opacity="0.7" />
+</svg>
