@@ -114,7 +114,16 @@ export function CursorGlow() {
   // Client-only setup: device support check + animation loop.
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reducedMotion) return;
+    const finePointer =
+      window.matchMedia("(pointer: fine)").matches && window.matchMedia("(hover: hover)").matches;
+
+    if (reducedMotion || !finePointer) {
+      // Touch/coarse-pointer devices never fire mousemove, so without this the
+      // glow would sit rendered at its default top-left position forever.
+      if (containerRef.current) containerRef.current.style.display = "none";
+      if (glowRef.current) glowRef.current.style.display = "none";
+      return;
+    }
 
     // Apply CSS variables to the glow element (client only; defaults already rendered).
     if (glowRef.current) {

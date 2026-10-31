@@ -34,10 +34,6 @@ export function ProjectVisual({ project }: { project: Project }) {
   );
 }
 
-const Bar = ({ w = "w-full", h = "h-2" }: { w?: string; h?: string }) => (
-  <span className={`block ${h} ${w} rounded-full bg-border`} />
-);
-
 /* --------------------------------------------------------------- Sanket --- */
 
 function SanketVisual() {
@@ -106,37 +102,15 @@ function RestaurantVisual() {
 
 function NotesVisual() {
   return (
-    <>
-      <div className="flex flex-wrap gap-1.5">
-        {["Science", "Mathematics", "English", "Nepali", "Account", "Computer"].map((subject, index) => (
-          <span
-            key={subject}
-            className={`rounded-lg border px-2.5 py-1 text-[10.5px] ${
-              index === 0 ? "border-accent/40 bg-accent/10 text-foreground" : "border-border bg-surface/70 text-subtle"
-            }`}
-          >
-            {subject}
-          </span>
-        ))}
-      </div>
-      <div className="grid grid-cols-3 gap-2.5">
-        {[0, 1, 2].map((page) => (
-          <div key={page} className="space-y-1.5 rounded-xl border border-border bg-surface/80 p-2.5">
-            <span className="mb-1 block h-8 rounded-md bg-border/70" />
-            <Bar h="h-1.5" w="w-full" />
-            <Bar h="h-1.5" w="w-3/4" />
-          </div>
-        ))}
-      </div>
-      <div className="flex items-center gap-2.5 rounded-xl border border-border bg-surface/60 px-3.5 py-2.5">
-        <span className="text-[10.5px] text-subtle">past questions</span>
-        <span className="ml-auto flex gap-1">
-          {Array.from({ length: 4 }).map((_, index) => (
-            <span key={index} className="size-1.5 rounded-full bg-accent/40" />
-          ))}
-        </span>
-      </div>
-    </>
+    <Image
+      src="/class-9-10-notes.png"
+      alt="Class 9 and 10 Notes Platform promotional banner"
+      className="max-w-full h-auto rounded-2xl border border-border bg-surface-2 shadow-card object-contain"
+      sizes="(max-width: 640px) 100vw, 640px"
+      width={640}
+      height={480}
+      style={{ display: "block", margin: "0 auto" }}
+    />
   );
 }
 
