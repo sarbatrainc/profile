@@ -1,5 +1,6 @@
 {
   "name": "raghav-portfolio",
+  "account_id": "4e0410e0d8e8384fa1286d7c497054a7",
   "main": "cloudflare/worker.js",
   "compatibility_date": "2026-10-31",
   "assets": {
