@@ -92,7 +92,7 @@ export function CursorGlow() {
     el.style.zIndex = "9998";
     el.style.transform = "translate(-50%, -50%)";
     el.style.willChange = "left, top, opacity, width, height";
-    el.style.background = `radial-gradient(circle, rgba(${glowRgb} / 0.5) 0%, rgba(${glowRgb} / 0) 70%)`;
+    el.style.background = `radial-gradient(circle, rgba(${glowRgb}, 0.5) 0%, rgba(${glowRgb}, 0) 70%)`;
 
     containerRef.current.appendChild(el);
 
@@ -128,7 +128,7 @@ export function CursorGlow() {
     // Apply CSS variables to the glow element (client only; defaults already rendered).
     if (glowRef.current) {
       const { glowRgb } = getConfig();
-      glowRef.current.style.background = `radial-gradient(circle, rgba(${glowRgb} / 0.35) 0%, rgba(${glowRgb} / 0) 70%)`;
+      glowRef.current.style.background = `radial-gradient(circle, rgba(${glowRgb}, 0.35) 0%, rgba(${glowRgb}, 0) 70%)`;
       glowRef.current.style.mixBlendMode = "lighten";
     }
 
@@ -241,7 +241,7 @@ export function CursorGlow() {
           width: `${DEFAULTS_CONFIG.glowSize}px`,
           height: `${DEFAULTS_CONFIG.glowSize}px`,
           transform: "translate(-50%, -50%)",
-          background: `radial-gradient(circle, rgba(${glowRgb} / 0.35) 0%, rgba(${glowRgb} / 0) 70%)`,
+          background: `radial-gradient(circle, rgba(${glowRgb}, 0.35) 0%, rgba(${glowRgb}, 0) 70%)`,
           mixBlendMode: "lighten",
         }}
       />
