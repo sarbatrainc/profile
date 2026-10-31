@@ -107,12 +107,23 @@ It uses headless Chrome and reads the name/title/stack from environment variable
 
 ## Deployment
 
-This is a static site. The simplest path is:
+**Live setup:** this site is deployed to **Cloudflare** (Workers + Static Assets) and served at
+[www.raghavghimire.com.np](https://www.raghavghimire.com.np), with `raghavghimire.com.np`
+301-redirecting to it. Config lives in [`wrangler.jsonc`](wrangler.jsonc) and the redirect logic
+in [`cloudflare/worker.js`](cloudflare/worker.js).
 
-### Option A — Git-based host (recommended)
+- **Manual deploy:** `npm run build && npx wrangler deploy` (requires `wrangler login` once, or
+  `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` in the environment).
+- **Auto deploy:** [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) deploys on every
+  push to `main`. It needs two **repository secrets**: `CLOUDFLARE_API_TOKEN` (an API token scoped
+  to Account → Workers Scripts: Edit for the target account) and `CLOUDFLARE_ACCOUNT_ID`.
 
-Push the repository to GitHub, then connect it to **Vercel** or **Netlify**. Both auto-detect
-Next.js and the `out/` directory.
+This is a static site, so any host that serves static files works equally well. Other options:
+
+### Option A — Git-based host
+
+Push the repository to GitHub, then connect it to **Vercel**, **Netlify** or **Cloudflare Pages**.
+All three auto-detect Next.js and the `out/` directory.
 
 ### Option B — Serve `out/` yourself
 

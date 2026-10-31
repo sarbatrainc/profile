@@ -1,0 +1,15 @@
+{
+  "name": "raghav-portfolio",
+  "main": "cloudflare/worker.js",
+  "compatibility_date": "2026-10-31",
+  "assets": {
+    "directory": "./out",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": true
+  },
+  "routes": [
+    { "pattern": "raghavghimire.com.np", "custom_domain": true },
+    { "pattern": "www.raghavghimire.com.np", "custom_domain": true }
+  ]
+}
