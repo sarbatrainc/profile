@@ -92,7 +92,7 @@ export const siteConfig = {
   /** Real facts only — no invented numbers. */
   stats: [
     {
-      number: "10+",
+      number: "3+",
       label: "Years Coding",
       description: "Flutter, Dart, Laravel and PostgreSQL since student days.",
     },
